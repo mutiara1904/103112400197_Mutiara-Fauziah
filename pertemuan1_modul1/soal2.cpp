@@ -17,10 +17,6 @@ int main(){
         return 0;
     }
 
-    // int p =     int r = angka / 100;
-
-    // int s = angka % 10;
-
     if(angka / 100 > 0){
         cout << ratus[angka /100 ] << " ";
     }
