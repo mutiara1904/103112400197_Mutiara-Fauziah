@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-nt main(){
+int main(){
     float x, y;
     cout << "Masukan bilangan pertama : ";
     cin >> x;
