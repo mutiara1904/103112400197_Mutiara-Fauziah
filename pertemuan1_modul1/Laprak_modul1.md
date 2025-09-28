@@ -3,23 +3,28 @@
 <p align="center">Mutiara Fauziah  - 103112400197</p>
 
 ## Dasar Teori
-Algoritma adalah langkah-langkah untuk memecahkan masalah. Algoritma dibutuhkan untuk memerintah komputer mengembil langkah-langkah tertentu dalam menyelesaikan masalah.[1]
 
+Algoritma adalah langkah-langkah untuk memecahkan masalah. Algoritma dibutuhkan untuk memerintah komputer mengembil langkah-langkah tertentu dalam menyelesaikan masalah.[1]
 
 ### A. Dasar pemprograman <br/>
 
 ...
 
 #### 1. Struktur C++
+
 Perintah #include <iostream> adalah oerintah untuk memanggil library, maksudnya kita akan memanggil dan menggunakan isi library.
 Fungsi main adalah titik awal program dijalankan.[2]
+
 #### 2. Tipe data
+
 Tipe data adalah jenis tempat penyimpanan data.[2]
 
 #### 3. Variabel
+
 Variabel adalah tempat menyimpan data. Variabel dapat diisi angka, huruf, karakter lain tergantung tipe datanya.[2]
 
 #### 4. Konstanta
+
 konstanta adalah jenis identifier yang bersifat konstan yang artinya nilai dalam variabel tidak dapat diubah.[2]
 
 ### B. Input dan output<br/>
@@ -27,35 +32,47 @@ konstanta adalah jenis identifier yang bersifat konstan yang artinya nilai dalam
 ...
 
 #### 1. Fungsi cout
+
 Fungsi cout adalah perintah untuk menampilkan teks dilayar.[3]
 
 #### 2. Fungsi cin
+
 Fungsi cin untuk menerima masukan dari user.[4]
 
-
-
 ### C. Operator <br/>
+
 ...
 
-#### 1.  Operator Aritmatika
+#### 1. Operator Aritmatika
+
 Operator artimatika digunakan untuk perhitungan aritmatika yang terdiri dari beberapa jenis antara lain pembagian, pemjumlahan, perkalian, pengurangan, dan sisa pembagian.[5]
+
 #### 2. Operator Logika
+
 Operator logika adalah operasi yang hanya memberikan hasil benar atau salah. Operator logika terdiri dari "dan/end"(&&), "atau/or",(||), dan !(not).[5]
 
 ### D. Kondisional <br/>
+
 ...
+
 #### 1. If - else
+
 if-else adalah salah satu bentuk conditional statement paling dasar dalam C++. Ini memungkinkan program untuk memilih di antara dua blok kode yang akan dieksekusi berdasarkan kondisi yang dievaluasi.[6]
 
 #### 2. Switch - case
+
 Switch memungkinkan Anda mengeksekusi kode yang berbeda berdasarkan nilai yang Anda berikan. Switch biasanya digunakan untuk menangani situasi yang memerulukan tindakan berbeda dari beberapa kondisi.[6]
 
 ### E. Perulangan
+
 ...
+
 #### 1. For loop
-For adalah  jenis loop yang umum untuk mengulang kode program sejumlah kali dengan menggunakan variabel yang diinisialisasi, kondisi loop dan perubahan variabel iterasi.Variabel iterasi dimulai dengan nilai awal pada awal loop. Kemudian kondisi loop diperiksa, dan jika kondisi terpenuhi, kode program akan dieksekusi. Setelah setiap iterasi, variabel iterasi diubah dengan perubahan yang telah ditentukan sebelumnya.  Selama kondisi loop tidak terpenuhi, loop For akan berlanjut.[6]
+
+For adalah jenis loop yang umum untuk mengulang kode program sejumlah kali dengan menggunakan variabel yang diinisialisasi, kondisi loop dan perubahan variabel iterasi.Variabel iterasi dimulai dengan nilai awal pada awal loop. Kemudian kondisi loop diperiksa, dan jika kondisi terpenuhi, kode program akan dieksekusi. Setelah setiap iterasi, variabel iterasi diubah dengan perubahan yang telah ditentukan sebelumnya. Selama kondisi loop tidak terpenuhi, loop For akan berlanjut.[6]
 
 #### 2. While loop
+
 Loop while dapat digunakan untuk mengulang kode program dengan kondisi yang diuji setiap loop.Loop while trerdiri dari tiga bagian utama, yaitu deklarasi loop, kondisi loop, perubahan variabel.[6]
 
 ## Guided
@@ -340,6 +357,3 @@ Algoritma merupakan dasar penyusunan langkah-langkah untuk memecahkan masalah de
 [4] Sianipar, Rismon Hasiholan.(2012)."Pemrograman C++ : Dasar Pemrograman Berorientasi Objek".Penerbit Andi. <br>
 [5] Anam, Syaiful, Indah Yanti, Zuraidah Fitriah, dan Ummu Habibah.(2021)."Cara Mudah Belajar Bahasa Pemrograman C++".Universitas Brawijaya Press<br>
 [6] Harnadi, Bernardinus, Antonius Eldy Putra, Wilibrordus Endra Bima, dkk.(2025)."Dasar Pemrograman Logika Dengan C++". Semarang: Siega Publisher.
-
-
-
