@@ -226,7 +226,7 @@ int main(){
 ### Output Unguided 2 :
 
 ##### Output 1
-![Screenshot Output Unguided 2_1](https://github.com/mutia1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan3_modul3/Output_unguided2_modul3.png)
+![Screenshot Output Unguided 2_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan3_modul3/Output_unguided2_modul3.png)
 
 Program ini untuk mengelola dan menampilkan data pelajaran, program dibuat dalam tiga fike, yaitu file header (pelajaran.h), file implementasi (pelajaran.cpp), dan file utama (main.cpp). Dalam file header, didefinisikan struktur pelajaran yang berisi dua atribut, yaitu namaMapel untuk menyimpan nama mata pelajaran dan kodeMapel untuk menyimpan kode pelajaran. Fungsi create_pelajaran untuk membuat data pelajaran baru dan tampil_pelajaran untuk menampilkan data tersebut. Pada file implementasi (pelajaran.cpp), fungsi create_pelajaran digunakan untuk mengisi nilai atribut namaMapel dan kodeMapel. Fungsi tampil_pelajaran berfungsi menampilkan nama pelajaran dan kodenya ke layar. Di bagian main(), program membuat satu data pelajaran dengan nama “Struktur Data” dan kode “STD”.
 
@@ -312,7 +312,7 @@ int main(){
 ### Output Unguided 3 :
 
 ##### Output 1
-![Screenshot Output Unguided 3_1](https://github.com/mutia1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan3_modul3/Output_unguided3_modul3.png)
+![Screenshot Output Unguided 3_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan3_modul3/Output_unguided3_modul3.png)
 
 Program ini untuk menampilkan dua buah array dua dimensi (3×3) dan menukar satu elemen dari array pertama dengan satu elemen dari array kedua berdasarkan nilai yang dimasukkan oleh pengguna. Fungsi tampilArray digunakan untuk menampilkan isi array dalam bentuk matriks 3×3 ke layar. Fungsi tukarNilai berfungsi untuk mencari nilai tertentu di masing-masing array, kemudian menukar posisi kedua nilai tersebut. Pencarian dilakukan dengan cara memeriksa setiap elemen array menggunakan perulangan for, dan jika ditemukan nilai yang sesuai, program menyimpan alamat memori elemen tersebut menggunakan pointer (int *x1 dan int *x2). Setelah kedua nilai ditemukan, isi keduanya ditukar menggunakan variabel sementara (temp). Pada fungsi main, dua buah array dideklarasikan dan diisi dengan angka berbeda. Program menampilkan isi awal kedua array, kemudian meminta pengguna memasukkan satu nilai dari arrA dan satu nilai dari arrB yang ingin ditukar. Setelah proses pertukaran dilakukan, program menampilkan isi kedua array kembali untuk menunjukkan hasil perubahan.
 
