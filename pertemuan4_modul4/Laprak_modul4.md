@@ -646,7 +646,7 @@ int main(){
 Program ini adalah contoh penuh penggunaan struktur data linked list satu arah. Fungsi ini memungkinkan pengguna untuk menambahkan, menghapus, dan menampilkan elemen-elemen dalam list yang bisa tumbuh secara dinamis.Beberapa fungsi seperti insertFirst, deleteFirst, deleteLast, dan deleteAfter digunakan untuk mengubah isi dari list tersebut. Fungsi nbList berfungsi menghitung jumlah elemen dalam list, sedangkan deleteList digunakan untuk menghapus seluruh elemen dari list. Di dalam fungsi main(), program membuat beberapa elemen, menambahkannya ke dalam list, kemudian menghapus beberapa elemen dan menampilkan hasil akhirnya. 
 
 ## Kesimpulan
-
+Pemrograman adalah proses membuat sekumpulan perintah atau instruksi agar komputer bisa melakukan tugas tertentu. Di dunia pemrograman, salah satu jenis struktur data yang sering digunakan adalah linked list. Berbeda dengan array yang ukurannya tidak bisa berubah, linked list memiliki ukuran yang bisa berubah karena setiap elemen atau node dalam linked list saling terhubung lewat pointer. Pada singly linked list khususnya, setiap node hanya memiliki satu pointer yang menunjuk ke node berikutnya. Struktur ini membuat proses menambahkan atau menghapus data dalam program menjadi lebih mudah.
 
 ## Referensi
 [1]Hanief, S., Jepriana, I. W., & Kom, S. (2020). Konsep Algoritme dan Aplikasinya dalam Bahasa Pemrograman C++. Penerbit Andi.<br>
