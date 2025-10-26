@@ -614,7 +614,7 @@ int main() {
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan%_modul5/Output_unguided1_modul5.png)
+![Screenshot Output Unguided 1_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan5_modul5/Output_unguided1_modul5.png)
 
 Program ini berfungsi untuk mencari data dalam linked list menggunakan metode binary search. Struktur Node digunakan untuk menyimpan data dan pointer ke node berikutnya. Fungsi append() menambahkan data baru ke akhir list, sedangkan displayList() menampilkan seluruh isi list. Fungsi binarySearch() melakukan pencarian dengan membagi list menjadi dua bagian, memeriksa nilai tengah, lalu menentukan apakah pencarian dilanjutkan ke kiri atau kanan hingga data ditemukan atau tidak ada elemen tersisa. Pada fungsi main(), program membuat list berisi 10 hingga 60, menampilkannya, lalu secara otomatis mencari nilai 40 (ditemukan) dan 25 (tidak ditemukan).
 
