@@ -15,13 +15,10 @@ void displayList(Node* head) {
     }
     
     cout << "Linked List yang dibuat: ";
-    
     Node* temp = head;
     while (temp) {
         cout << temp->data;
-        if (temp->next) {
-            cout << " -> ";
-        }
+        if (temp->next) cout << " -> ";
         temp = temp->next;
     }
     cout << " -> NULL\n";
@@ -33,9 +30,8 @@ Node* binarySearch(Node* head, int key) {
     
     // Hitung ukuran linked list
     int size = 0;
-    for (Node* current = head; current; current = current->next) {
+    for (Node* current = head; current; current = current->next)
         size++;
-    }
     
     Node* start = head;
     int iteration = 1;
@@ -45,52 +41,43 @@ Node* binarySearch(Node* head, int key) {
         Node* midNode = start;
         
         // Pindah ke node tengah
-        for (int i = 0; i < mid; i++) {
+        for (int i = 0; i < mid; i++)
             midNode = midNode->next;
-        }
         
-        // Cek apakah data ditemukan
+        // Jika ketemu
         if (midNode->data == key) {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) - DITEMUKAN!\n";
             return midNode;
         }
         
-        // Jika data midNode lebih kecil dari key, cari di bagian kanan
+        // Jika mid lebih kecil dari key → cari di kanan
         if (midNode->data < key) {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) -> Cari di bagian kanan\n";
             
             int newSize = size - mid - 1;
-            
             if (newSize == 1) {
                 Node* lastNode = midNode->next;
-                if (lastNode && lastNode->data == key) {
-                    return lastNode;
-                }
+                if (lastNode && lastNode->data == key) return lastNode;
                 cout << "Tidak ada elemen tersisa\n";
                 return nullptr;
             }
-            
             start = midNode->next;
             size = newSize;
         }
-        // Jika data midNode lebih besar dari key, cari di bagian kiri
+        // Jika mid lebih besar dari key → cari di kiri
         else {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) -> Cari di bagian kiri\n";
             
             if (mid == 1) {
-                if (start->data == key) {
-                    return start;
-                }
+                if (start->data == key) return start;
                 cout << "Tidak ada elemen tersisa\n";
                 return nullptr;
             }
-            
             size = mid;
         }
-        
         iteration++;
     }
     
@@ -98,22 +85,18 @@ Node* binarySearch(Node* head, int key) {
     return nullptr;
 }
 
-// Prosedur untuk menambah node di akhir
+// Tambah node di akhir
 void append(Node*& head, int value) {
     Node* newNode = new Node{value, nullptr};
-    
-    if (!head) {
-        head = newNode;
-    } else {
+    if (!head) head = newNode;
+    else {
         Node* temp = head;
-        while (temp->next) {
-            temp = temp->next;
-        }
+        while (temp->next) temp = temp->next;
         temp->next = newNode;
     }
 }
 
-// Fungsi untuk membersihkan memori
+// Hapus semua node (bebaskan memori)
 void deleteList(Node*& head) {
     while (head) {
         Node* temp = head;
@@ -122,13 +105,14 @@ void deleteList(Node*& head) {
     }
 }
 
+// Main program
 int main() {
     Node* head = nullptr;
     int searchKey;
     
     cout << "BINARY SEARCH PADA LINKED LIST\n";
     
-    // Data linked list sudah ditentukan dari awal
+    // Membuat linked list
     append(head, 10);
     append(head, 20);
     append(head, 30);
@@ -136,35 +120,45 @@ int main() {
     append(head, 50);
     append(head, 60);
     
-    // Tampilkan isi linked list
+    // Tampilkan list
     displayList(head);
     
-    // 🔹 Pencarian pertama (otomatis mencari 40)
+    // 🔹 Pencarian pertama
     searchKey = 40;
-    cout << "\nMencari nilai: " << searchKey << endl;
+    cout << "Mencari nilai: " << searchKey << "\n";
     
     Node* result = binarySearch(head, searchKey);
     
     if (result) {
         cout << "\nHasil: Nilai " << result->data << " DITEMUKAN pada linked list!\n";
+        cout << "Alamat node: " << result << "\n";
+        cout << "Data node: " << result->data << "\n";
+        if (result->next)
+            cout << "Node berikutnya: " << result->next->data << "\n";
+        else
+            cout << "Node berikutnya: NULL\n";
     } else {
         cout << "\nHasil: Nilai " << searchKey << " TIDAK DITEMUKAN dalam linked list!\n";
     }
     
-    // 🔹 Pencarian kedua (otomatis mencari 25)
+    // 🔹 Pencarian kedua
     searchKey = 25;
-    cout << "\nMencari nilai: " << searchKey << endl;
+    cout << "Mencari nilai: " << searchKey << "\n";
     
     result = binarySearch(head, searchKey);
     
     if (result) {
         cout << "\nHasil: Nilai " << result->data << " DITEMUKAN pada linked list!\n";
+        cout << "Alamat node: " << result << "\n";
+        cout << "Data node: " << result->data << "\n";
+        if (result->next)
+            cout << "Node berikutnya: " << result->next->data << "\n";
+        else
+            cout << "Node berikutnya: NULL\n";
     } else {
         cout << "\nHasil: Nilai " << searchKey << " TIDAK DITEMUKAN dalam linked list!\n";
     }
     
-    // Bersihkan memori
     deleteList(head);
-    
     return 0;
 }

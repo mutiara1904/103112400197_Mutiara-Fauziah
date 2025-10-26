@@ -122,6 +122,306 @@ int main() {
 ```
 Programini digunakan untuk mencari sebuah data di dalam linked list dengan menggunakan algoritma Linear Search. Struktur data yang digunakan adalah linked list, di mana setiap node terdiri dari dua bagian: bagian pertama menyimpan nilai data dan bagian kedua menunjuk ke node berikutnya. Fungsi append() digunakan untuk menambahkan node baru di akhir dari linked list. Dalam fungsi linearSearch(), pencarian dilakukan secara bertahap mulai dari node pertama (head) sampai node terakhir. Setiap node diperiksa satu per satu untuk mengetahui apakah nilai datanya sama dengan nilai yang dicari (key). Jika ditemukan, fungsi akan mengembalikan pointer ke node tersebut; jika tidak ditemukan, fungsi akan mengembalikan nilai nullptr. Di dalam fungsi main(), program membuat linked list dengan data 10, 20, dan 30, lalu melakukan pencarian terhadap nilai 20 menggunakan fungsi linearSearch(). Hasil dari proses pencarian tampil di layar dalam bentuk pesan “found” jika data ditemukan dan “not found” jika tidak.
 
+### soal guided 2
+file "listBuah.h"
+```C++
+#ifndef LISTBUAH_H
+#define LISTBUAH_H
+#define Nil NULL
+#include <iostream>
+using namespace std;
+
+struct buah{
+    string nama;
+    int jumlah;
+    float harga;
+};
+
+typedef buah dataBuah; // nama alias daatbuah pada struct buah
+typedef struct node *address; // mendefniskan alias address sbgi pointer ke struct
+
+struct node{ //  node unutk isi linked list  isi setiap 
+    dataBuah isiData;
+    address next;
+};
+struct linkedList{ //linked list
+   address first;
+};
+
+bool isEmpty(linkedList List);
+void createList(linkedList &List);
+address alokasi(string nama, int jumlah, float harga);
+void dealokasi(address &node);
+void printList(linkedList List);
+void insertFirst (linkedList &List, address nodeBaru);
+void insertAfter(linkedList &List, address nodeBaru, address Prev);
+void insertLast(linkedList &List, address nodeBaru);
+void delFirst(linkedList &List);
+void delLst(linkedList &List);
+void delAfter(linkedList &List, address nodeHapus, address nodePrev);
+int nbList(linkedList List);
+void deleteList(linkedList &List);
+
+void updateFirst(linkedList List);
+void updateLast(linkedList List);
+void updateAfter(linkedList List, address Prev);
+
+#endif
+
+```
+file "listBuah.cpp"
+```C++
+#include "listBuah.h"
+#include <iostream>
+using namespace std;
+
+//fungsi untuk cek apakah list kosong atau tidak
+bool isEmpty(linkedList List) {
+    if(List.first == Nil){
+        return true; 
+    } else {
+        return false;
+    }
+}
+
+//pembuatan linked list kosong
+void createList(linkedList &List) {
+    List.first = Nil;
+}
+
+//pembuatan node baru dengan menerapkan manajemen memori
+address alokasi(string nama, int jumlah, float harga) { 
+    address nodeBaru = new node; 
+    nodeBaru->isiData.nama = nama;
+    nodeBaru->isiData.jumlah = jumlah; 
+    nodeBaru->isiData.harga = harga;
+    nodeBaru->next = Nil;
+    return nodeBaru;
+}
+
+//penghapusan node dengan menerapkan manajemen memori
+void dealokasi(address &node) {
+    node->next = Nil;
+    delete node;
+}
+
+//prosedur-prosedur untuk insert / menambahkan node baru kedalam list
+void insertFirst(linkedList &List, address nodeBaru) {
+    nodeBaru->next = List.first; 
+    List.first = nodeBaru;
+}
+
+void insertAfter(linkedList &List, address nodeBaru, address Prev) {
+    if (Prev != Nil) {
+        nodeBaru->next = Prev->next;
+        Prev->next = nodeBaru;
+    } else {
+        cout << "Node sebelumnya tidak valid!" << endl;
+    }
+}
+
+void insertLast(linkedList &List, address nodeBaru) {
+    if (isEmpty(List)) {
+        List.first = nodeBaru;
+    } else {
+        address nodeBantu = List.first;
+        while (nodeBantu->next != Nil) {
+            nodeBantu = nodeBantu->next;
+        }
+        nodeBantu->next = nodeBaru;
+    }
+}
+
+//prosedur-prosedur untuk delete / menghapus node yang ada didalam list
+void delFirst(linkedList &List){
+    address nodeHapus;
+    if (isEmpty(List) == false) {
+        nodeHapus = List.first;
+        List.first = List.first->next;
+        nodeHapus->next = Nil;
+        dealokasi(nodeHapus);
+        cout << "Node pertama berhasil terhapus!" << endl;
+    } else {
+        cout << "List kosong!" << endl;
+    }
+}
+
+void delLast(linkedList &List){
+    address nodeHapus, nodePrev;
+    if(isEmpty(List) == false){
+        nodeHapus = List.first;
+        if(nodeHapus->next == Nil){
+            List.first->next = Nil;
+            dealokasi(nodeHapus);
+        } else { 
+            while(nodeHapus->next != Nil){
+                nodePrev = nodeHapus; 
+                nodeHapus = nodeHapus->next;
+            }
+            nodePrev->next = Nil; 
+            dealokasi(nodeHapus);
+        }
+        cout << "Node terakhir berhasil terhapus!" << endl;
+    } else {
+        cout << "list kosong" << endl;
+    }
+}
+
+void delAfter(linkedList &List, address nodeHapus, address nodePrev){
+    if(isEmpty(List) == true){
+        cout << "List kosong!" << endl;
+    } else { //jika list tidak kosong
+        if (nodePrev != Nil && nodePrev->next != Nil) { 
+            nodeHapus = nodePrev->next;       
+            nodePrev->next = nodeHapus->next;  
+            nodeHapus->next = Nil;         
+            dealokasi(nodeHapus);
+            cout << "Node setelah node " << nodePrev->isiData.nama << " berhasil terhapus!" << endl;
+        } else {
+            cout << "Node sebelumnya (prev) tidak valid!" << endl;
+        }
+    }
+}
+
+//prosedur untuk menampilkan isi list
+void printList(linkedList List) {
+    if (isEmpty(List)) {
+        cout << "List kosong." << endl;
+    } else {
+        address nodeBantu = List.first;
+        while (nodeBantu != Nil) { 
+            cout << "Nama Buah : " << nodeBantu->isiData.nama << ", Jumlah : " << nodeBantu->isiData.jumlah << ", Harga : " << nodeBantu->isiData.harga << endl;
+            nodeBantu = nodeBantu->next;
+        }
+    }
+}
+
+//function untuk menampilkan jumlah node didalam list
+int nbList(linkedList List) {
+    int count = 0;
+    address nodeBantu = List.first;
+    while (nodeBantu != Nil) {
+        count++;
+        nodeBantu = nodeBantu->next; 
+    }
+    return count;
+}
+
+//prosedur untuk menghapus list (menghapus semua node didalam list)
+void deleteList(linkedList &List){
+    address nodeBantu, nodeHapus;
+    nodeBantu = List.first;
+    while(nodeBantu != Nil){
+        nodeHapus = nodeBantu;
+        nodeBantu = nodeBantu->next;
+        dealokasi(nodeHapus); 
+    }
+    List.first = Nil; 
+    cout << "List berhasil terhapus!" << endl;
+}
+
+/*----- MATERI PERTEMUAN 5 - SINGLY LINKED LIST (BAGIAN KEDUA) - PART 1 (UPDATE) -----*/
+//prosedur-prosedur untuk melakukan update data node
+void updateFirst(linkedList List){
+    if(isEmpty(List) == true){
+        cout << "List kosong!" << endl;
+    } else {
+        cout << "Masukkan update data node pertama : " << endl;
+        cout << "Nama buah : ";
+        cin >> List.first->isiData.nama;
+        cout << "Jumlah : ";
+        cin >> List.first->isiData.jumlah;
+        cout << "Harga : ";
+        cin >> List.first->isiData.harga;
+        cout << "Data Berhasil Diupdate!" << endl;
+        cout << endl;
+    }
+}
+
+void updateLast(linkedList List){
+    if (isEmpty(List) == true) {
+        cout << "List Kosong!" << endl;
+    } else {
+        address nodeBantu = List.first;
+        while (nodeBantu->next != Nil) {
+            nodeBantu = nodeBantu->next;
+        }
+        cout << "masukkan update data node terakhir : " << endl;
+        cout << "Nama buah : ";
+        cin >> nodeBantu->isiData.nama;
+        cout << "Jumlah : ";
+        cin >> nodeBantu->isiData.jumlah;
+        cout << "Harga : ";
+        cin >> nodeBantu->isiData.harga;
+        cout << "Data Berhasil Diupdate!" << endl;
+        cout << endl;
+    }
+}
+
+void updateAfter(linkedList List, address nodePrev){
+    if(isEmpty(List) == true){
+        cout << "List kosong!" << endl;
+    } else {
+        if (nodePrev != Nil && nodePrev->next != Nil){
+            address nodeBantu = nodePrev->next;
+            cout << "masukkan update data node setelah node " << nodePrev->isiData.nama << " : " << endl;
+            cout << "Nama buah : ";
+            cin >> nodeBantu->isiData.nama;
+            cout << "Jumlah : ";
+            cin >> nodeBantu->isiData.jumlah;
+            cout << "Harga : ";
+            cin >> nodeBantu->isiData.harga;
+            cout << "Data Berhasil Diupdate!" << endl;
+            cout << endl;
+        } else {
+            cout << "Node sebelumnya (prev) tidak valid!" << endl;
+        }
+    }
+}
+```
+
+file "main.cpp"
+```C++
+#include "listBuah.h"
+#include <iostream>
+using namespace std;
+
+int main(){
+    linkedList List;
+    address nodeA, nodeB, nodeC, nodeD, nodeE = Nil;
+    createList(List);
+
+    dataBuah dtBuah;
+
+    nodeA = alokasi("jeruk" , 100, 3000);
+    nodeB = alokasi("apel", 75, 4000);
+    nodeC = alokasi("pir" , 87, 5000 );
+    nodeD = alokasi("semangka", 43, 11500);
+    nodeE = alokasi("durian", 15, 31450);
+
+    insertFirst(List, nodeA);
+    insertLast(List, nodeB);
+    insertAfter(List, nodeC, nodeA);
+    insertAfter(List, nodeD, nodeC);
+    insertLast(List, nodeE); // a-c-d-b-e
+    cout << "isi list detelah dilakukan insert" << endl;
+    printList(List);
+    cout << " Jumlah node : " << nbList(List) << endl;
+    cout << endl;
+
+    updateFirst(List);
+    updateLast(List);
+    updateAfter(List, nodeD);
+
+    cout << "isi list setelah dlakukan update " << endl;
+    printList(List);
+    cout << "jumlah node : " << nbList(List) << endl;
+    cout << endl;
+
+
+    return 0;
+}
+```
 
 
 ## Unguided 
@@ -162,13 +462,10 @@ void displayList(Node* head) {
     }
     
     cout << "Linked List yang dibuat: ";
-    
     Node* temp = head;
     while (temp) {
         cout << temp->data;
-        if (temp->next) {
-            cout << " -> ";
-        }
+        if (temp->next) cout << " -> ";
         temp = temp->next;
     }
     cout << " -> NULL\n";
@@ -180,9 +477,8 @@ Node* binarySearch(Node* head, int key) {
     
     // Hitung ukuran linked list
     int size = 0;
-    for (Node* current = head; current; current = current->next) {
+    for (Node* current = head; current; current = current->next)
         size++;
-    }
     
     Node* start = head;
     int iteration = 1;
@@ -192,52 +488,43 @@ Node* binarySearch(Node* head, int key) {
         Node* midNode = start;
         
         // Pindah ke node tengah
-        for (int i = 0; i < mid; i++) {
+        for (int i = 0; i < mid; i++)
             midNode = midNode->next;
-        }
         
-        // Cek apakah data ditemukan
+        // Jika ketemu
         if (midNode->data == key) {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) - DITEMUKAN!\n";
             return midNode;
         }
         
-        // Jika data midNode lebih kecil dari key, cari di bagian kanan
+        // Jika mid lebih kecil dari key → cari di kanan
         if (midNode->data < key) {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) -> Cari di bagian kanan\n";
             
             int newSize = size - mid - 1;
-            
             if (newSize == 1) {
                 Node* lastNode = midNode->next;
-                if (lastNode && lastNode->data == key) {
-                    return lastNode;
-                }
+                if (lastNode && lastNode->data == key) return lastNode;
                 cout << "Tidak ada elemen tersisa\n";
                 return nullptr;
             }
-            
             start = midNode->next;
             size = newSize;
         }
-        // Jika data midNode lebih besar dari key, cari di bagian kiri
+        // Jika mid lebih besar dari key → cari di kiri
         else {
             cout << "Iterasi " << iteration << ": Mid = " << midNode->data 
                  << " (indeks tengah) -> Cari di bagian kiri\n";
             
             if (mid == 1) {
-                if (start->data == key) {
-                    return start;
-                }
+                if (start->data == key) return start;
                 cout << "Tidak ada elemen tersisa\n";
                 return nullptr;
             }
-            
             size = mid;
         }
-        
         iteration++;
     }
     
@@ -245,22 +532,18 @@ Node* binarySearch(Node* head, int key) {
     return nullptr;
 }
 
-// Prosedur untuk menambah node di akhir
+// Tambah node di akhir
 void append(Node*& head, int value) {
     Node* newNode = new Node{value, nullptr};
-    
-    if (!head) {
-        head = newNode;
-    } else {
+    if (!head) head = newNode;
+    else {
         Node* temp = head;
-        while (temp->next) {
-            temp = temp->next;
-        }
+        while (temp->next) temp = temp->next;
         temp->next = newNode;
     }
 }
 
-// Fungsi untuk membersihkan memori
+// Hapus semua node (bebaskan memori)
 void deleteList(Node*& head) {
     while (head) {
         Node* temp = head;
@@ -269,13 +552,14 @@ void deleteList(Node*& head) {
     }
 }
 
+// Main program
 int main() {
     Node* head = nullptr;
     int searchKey;
     
     cout << "BINARY SEARCH PADA LINKED LIST\n";
     
-    // Data linked list sudah ditentukan dari awal
+    // Membuat linked list
     append(head, 10);
     append(head, 20);
     append(head, 30);
@@ -283,36 +567,46 @@ int main() {
     append(head, 50);
     append(head, 60);
     
-    // Tampilkan isi linked list
+    // Tampilkan list
     displayList(head);
     
-    // 🔹 Pencarian pertama (otomatis mencari 40)
+    // 🔹 Pencarian pertama
     searchKey = 40;
-    cout << "\nMencari nilai: " << searchKey << endl;
+    cout << "Mencari nilai: " << searchKey << "\n";
     
     Node* result = binarySearch(head, searchKey);
     
     if (result) {
         cout << "\nHasil: Nilai " << result->data << " DITEMUKAN pada linked list!\n";
+        cout << "Alamat node: " << result << "\n";
+        cout << "Data node: " << result->data << "\n";
+        if (result->next)
+            cout << "Node berikutnya: " << result->next->data << "\n";
+        else
+            cout << "Node berikutnya: NULL\n";
     } else {
         cout << "\nHasil: Nilai " << searchKey << " TIDAK DITEMUKAN dalam linked list!\n";
     }
     
-    // 🔹 Pencarian kedua (otomatis mencari 25)
+    // 🔹 Pencarian kedua
     searchKey = 25;
-    cout << "\nMencari nilai: " << searchKey << endl;
+    cout << "Mencari nilai: " << searchKey << "\n";
     
     result = binarySearch(head, searchKey);
     
     if (result) {
         cout << "\nHasil: Nilai " << result->data << " DITEMUKAN pada linked list!\n";
+        cout << "Alamat node: " << result << "\n";
+        cout << "Data node: " << result->data << "\n";
+        if (result->next)
+            cout << "Node berikutnya: " << result->next->data << "\n";
+        else
+            cout << "Node berikutnya: NULL\n";
     } else {
         cout << "\nHasil: Nilai " << searchKey << " TIDAK DITEMUKAN dalam linked list!\n";
     }
     
-    // Bersihkan memori
     deleteList(head);
-    
     return 0;
 }
 
