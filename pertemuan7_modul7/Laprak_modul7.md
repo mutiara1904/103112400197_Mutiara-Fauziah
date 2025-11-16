@@ -529,10 +529,10 @@ int main(){
 ![Screenshot Output Unguided 1_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan7_modul7/Output1_unguided_modul7.png)
 
 ##### Output 2
-![Screenshot Output Unguided 1_2](https://github.com/mutiara1904/1031124001997_Mutiara-Fauziah/blob/main/pertemuan7_modul7/Output2_unguided_modul7.png)
+![Screenshot Output Unguided 1_2](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan7_modul7/Output2_unguided_modul7.png)
 
 ##### Output 3
-![Screenshot Output Unguided 1_3](https://github.com/mutiara1904/1031124001997_Mutiara-Fauziah/blob/main/pertemuan7_modul7/Output3_unguided_modul7.png)
+![Screenshot Output Unguided 1_3](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan7_modul7/Output3_unguided_modul7.png)
 
 Program ini mengimplementasikan struktur data Stack berbasis array. Stack disusun menggunakan array info berukuran maksimum 20 elemen dan indeks top sebagai penanda elemen teratas. Program menyediakan operasi dasar seperti membuat stack (CreateStack), menambah elemen (push), menghapus elemen teratas (pop), memeriksa apakah stack kosong atau penuh (isEmpty, isFull), menampilkan isi stack dari atas ke bawah (printInfo), serta membalik urutan elemen stack menggunakan dua stack sementara (balikStack). Selain itu, program memiliki fungsi pushAscending, yaitu memasukkan elemen baru sambil menjaga agar stack tetap terurut ascending dengan bantuan dua stack temporary. Program juga menyediakan fungsi getInputStream, yang membaca input karakter satu per satu menggunakan cin.get(), kemudian mengonversinya menjadi angka dan memasukkannya ke dalam stack sampai pengguna menekan ENTER. Pada fungsi main, seluruh fitur diuji: operasi dasar stack, push ascending, dan input stream, lalu setiap hasilnya ditampilkan.
 
