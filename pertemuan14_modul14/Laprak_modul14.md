@@ -287,7 +287,7 @@ int main(){
 ### Output Unguided 1 :
 
 ##### Output 1
-![Screenshot Output Unguided 1_1](https://github.com/mutiara1904/10311240197_Mutiara-Fauziah/blob/main/pertemuan14_modul14/Output_unguided1_modul14.png)
+![Screenshot Output Unguided 1_1](https://github.com/mutiara1904/103112400197_Mutiara-Fauziah/blob/main/pertemuan14_modul14/Output_unguided1_modul14.png)
 
 Program tersebut merupakan implementasi struktur data graph tak berarah (undirected graph) menggunakan linked list dalam bahasa C++. Graph dibangun dari node-node yang menyimpan informasi berupa karakter dan daftar edge sebagai adjacency list. Program diawali dengan membuat graph kosong, kemudian menambahkan node A hingga H. Setiap node dihubungkan menggunakan fungsi ConnectNode yang membuat dua edge sekaligus sehingga hubungan bersifat dua arah. Setelah seluruh hubungan antar node terbentuk, fungsi PrintInfoGraph digunakan untuk menampilkan setiap node beserta node-node lain yang terhubung dengannya. Program ini menunjukkan cara membangun, menghubungkan, dan menampilkan graph tak berarah menggunakan struktur data linked list.
 
